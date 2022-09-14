@@ -27,13 +27,6 @@ function capturarCarrito(){
 
     let nombreCapturado = Productos[0].nombre;
     let cantidadCapturada = parseInt(prompt("Cuantas unidades quiere arrendar:"));
-    if (cantidadCapturada <= Productos[0].stock){
-        Productos[0].stock = Productos[0].stock - cantidadCapturada
-        console.log("Ahora " + Productos[0].nombre + " tiene " + Productos[0].stock)}
-    else {
-        alert("No procede")
-    }
-    
     let diasCapturados = parseInt(prompt("Cuantos días quiere arrendar:"));
     let valorCapturado = Productos[0].valor * cantidadCapturada * diasCapturados
 
@@ -108,7 +101,8 @@ function menu(){
         console.log("1. Ingresar productos");
         console.log("2. Mostrar productos ingresados");
         console.log("3. Agregar al arriendo");
-        console.log("4. Salir");
+        console.log("4. Mostrar solo categoria silla")
+        console.log("5. Salir");
         opcion = parseInt(prompt("Ingrese Opción: "));
         console.log("Usted ingreso la opcion " + opcion +"...")  
     
@@ -128,11 +122,19 @@ function menu(){
         }
 
         if (opcion == 4){
+            let elementosEncontrados = Productos.filter(
+                (elemento) => elemento.categoria == "Sillas"
+            )
+
+            console.log("Los Elementos en categoria Sillas son:" + elementosEncontrados)
+          }
+
+          if (opcion == 5){
             break
           }
     
-        if (opcion < 1 || opcion > 4){
-          alert("Ingrese opción correcta (1..4)...");
+        if (opcion < 1 || opcion > 5){
+          alert("Ingrese opción correcta (1..5)...");
     
        } 
     
